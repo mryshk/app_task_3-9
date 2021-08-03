@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index
     @lists = List.all
+    @list = List.new
   end
 
   def show
@@ -8,21 +9,18 @@ class BooksController < ApplicationController
   end
 
   def create
-    @list = List.new(params_list)
-    if @list.save
-      redirect_to books_path(list.id)
-    else_app
-      render :index
-    end
+    list = List.new(list_params)
+    list.save
+    redirect_to book_path(list.id)
   end
 
-
-
-
+  def edit
+    @list = List.find(params[:id])
+  end
 
 
   private
     def list_params
-      params.requore(:list).permit(:title,:body)
+      params.require(:list).permit(:title,:body)
     end
 end
