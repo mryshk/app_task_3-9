@@ -1,4 +1,10 @@
-<h2>Book was successfully created</h2>
-<p><%= @list.title %></p>
-<h2>body</h2>
-<p><%= @list.body %></p>
+<p><strong>Title</strong>
+ <%= @list.title %>
+</p>
+<p><strong>Body</strong>
+<%= @list.body %>
+</p>
+
+<span><%= link_to 'Edit',edit_books_path(@list.id) %></span>
+<span>|</span>
+<span><%= link_to 'Back',"/books" %></span>
