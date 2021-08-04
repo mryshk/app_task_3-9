@@ -9,9 +9,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    list = List.new(list_params)
-    list.save
-    redirect_to book_path(list.id)
+    @list = List.new(list_params)
+    if @list.save
+      redirect_to book_path(@list.id)
+      flash[:notice] = "Book was successfully created"
+    elsif
+      @lists = List.all
+      render :index
+    end
   end
 
   def edit
@@ -19,15 +24,21 @@ class BooksController < ApplicationController
   end
 
   def update
-    list = List.find(params[:id])
-    list.update(list_params)
-    redirect_to book_path(list.id)
+    @list = List.find(params[:id])
+    if @list.update(list_params)
+      redirect_to book_path(@list.id)
+      flash[:notice] = "Book was successfully updated"
+    elsif
+      render :edit
+    end
+
   end
 
   def destroy
     list = List.find(params[:id])
     list.destroy
     redirect_to books_path
+    flash[:notice] = "Book was successfully destroyed"
   end
 
   private
