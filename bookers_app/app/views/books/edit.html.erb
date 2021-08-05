@@ -1,11 +1,11 @@
 <h1>Editing Book</h1>
 
 <div>
- <% if @list.errors.any? %>
+ <% if @book.errors.any? %>
  <div class="error_explanation">
-   <h2><%= @list.errors.count %>&nbsp;errors prohibited this book from being saved:</h2>
+   <h2><%= @book.errors.count %>&nbsp;errors prohibited this book from being saved:</h2>
    <div>
-     <% @list.errors.full_messages.each do |message|%>
+     <% @book.errors.full_messages.each do |message|%>
      <ul>
       <li><%= message %></li>
      </ul>
@@ -15,19 +15,20 @@
  </div>
  <% end %>
 
-<%= form_with model:@list,url:"/books/#{@list.id}",local:true do |f| %>
+<%= form_with model:@book,url:"/books/#{@book.id}",local:true do |f| %>
 <div class="field">
-<h4>Title</h4>
-<%= f.text_field :title %>
+  <h4>Title</h4>
+   <%= f.text_field :title %>
 </div>
 <div class="field">
-<h4>Body</h4>
-<%= f.text_area :body %>
+  <h4>Body</h4>
+   <%= f.text_area :body %>
 </div>
 <div class="action">
-<%= f.submit 'Update Book' %>
+   <%= f.submit 'Update Book' %>
 </div>
 <% end %>
-<span><%= link_to "Show",book_path(@list.id) %></span>
+
+<span><%= link_to "Show",book_path(@book.id) %></span>
 <span>|</span>
 <span><%= link_to "Back",books_path %></span>

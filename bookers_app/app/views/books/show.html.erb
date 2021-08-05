@@ -1,12 +1,12 @@
 
 <p class="flash"><%= flash[:notice] %></p>
 <p><strong>Title:</strong>
- <%= @list.title %>
+ <%= @book.title %>
 </p>
 <p><strong>Body:</strong>
-<%= @list.body %>
+<%= @book.body %>
 </p>
 
-<span><%= link_to 'Edit',edit_books_path(@list.id) %></span>
+<span><%= link_to 'Edit',edit_book_path(@book.id) %></span>
 <span>|</span>
 <span><%= link_to 'Back',"/books" %></span>
