@@ -2,10 +2,14 @@
 
 <div>
  <% if @list.errors.any? %>
- <h2><%= @list.errors.count %>&nbsp;errors prohibited this book from being saved:</h2>
- <div>
- <% @list.errors.full_messages.each do |message|%>
- <ul><%= message %></ul>
+ <div class="error_explanation">
+   <h2><%= @list.errors.count %>&nbsp;errors prohibited this book from being saved:</h2>
+   <div>
+     <% @list.errors.full_messages.each do |message|%>
+     <ul>
+      <li><%= message %></li>
+     </ul>
+ </div>
  <% end %>
 
  </div>
