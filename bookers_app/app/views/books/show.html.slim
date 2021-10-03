@@ -1,0 +1,16 @@
+p.flash
+  = flash[:notice]
+p
+  strong
+    | Title:
+  = @book.title
+p
+  strong
+    | Body:
+  = @book.body
+span
+  = link_to 'Edit',edit_book_path(@book.id)
+span
+  | |
+span
+  = link_to 'Back',"/books"

@@ -1,0 +1,30 @@
+h1
+  | Editing Book
+div
+  - if @book.errors.any?
+    .error_explanation
+      h2
+        = @book.errors.count
+        |  errors prohibited this book from being saved:
+      div
+        - @book.errors.full_messages.each do |message|
+          ul
+            li
+              = message
+= form_with model:@book,url:"/books/#{@book.id}",local:true do |f|
+  .field
+    h4
+      | Title
+    = f.text_field :title
+  .field
+    h4
+      | Body
+    = f.text_area :body
+  .action
+    = f.submit 'Update Book'
+span
+  = link_to "Show",book_path(@book.id)
+span
+  | |
+span
+  = link_to "Back",books_path
